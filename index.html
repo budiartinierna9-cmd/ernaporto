@@ -6,7 +6,7 @@
     <title>PPG E-Portfolio | Perjalanan Kosmik</title>
     
     <!-- Google Fonts Import -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Pacifico&family=Poppins:wght@300;400;500;600;700&family=Azeret+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Azeret+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- AOS (Animate On Scroll) Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -206,13 +206,14 @@
             margin-bottom: 3rem;
         }
 
-        /* Profile Photo Frame - EASY TO SWAP */
+        /* Profile Photo Frame - UNIQUE SHAPE (Star/Polygon) */
         .profile-frame {
-            width: 250px;
-            height: 250px;
+            width: 280px;
+            height: 280px;
             margin: 2rem auto;
             position: relative;
             animation: floatCard 3s ease-in-out infinite;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         }
 
         @keyframes floatCard {
@@ -223,20 +224,20 @@
         .profile-photo {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--neon-cyan);
             box-shadow: 0 0 40px rgba(0, 217, 255, 0.6), inset 0 0 40px rgba(168, 85, 247, 0.3);
             position: relative;
             z-index: 1;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         }
 
         .profile-frame::before {
             content: '';
             position: absolute;
-            inset: -10px;
-            border: 2px solid var(--neon-purple);
-            border-radius: 50%;
+            inset: -15px;
+            background: conic-gradient(from 0deg, var(--neon-purple), var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             animation: spin 20s linear infinite;
             z-index: 0;
         }
@@ -244,11 +245,12 @@
         .profile-frame::after {
             content: '';
             position: absolute;
-            inset: -20px;
-            border: 1px solid var(--neon-cyan);
-            border-radius: 50%;
+            inset: -30px;
+            border: 2px solid var(--neon-cyan);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             animation: spinReverse 15s linear infinite;
             z-index: -1;
+            opacity: 0.5;
         }
 
         @keyframes spin {
@@ -308,7 +310,7 @@
             right: -50%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(Wavy Square, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
             animation: float 8s ease-in-out infinite;
         }
 
@@ -631,26 +633,39 @@
             z-index: 1;
         }
 
-        /* ==================== LAMPIRAN (ASSESSMENT) SECTION ==================== */
+        /* ==================== LAMPIRAN (ASSESSMENT) SECTION - IMPROVED CARD LAYOUT ==================== */
         .lampiran {
             padding: 4rem 2rem;
             background: rgba(0, 217, 255, 0.03);
         }
 
         .assessment-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 3rem auto;
         }
 
         .cycle-card {
-            background: rgba(168, 85, 247, 0.1);
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(0, 217, 255, 0.05));
             border: 2px solid var(--neon-cyan);
-            border-radius: 15px;
-            padding: 2rem;
+            border-radius: 20px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.2), 0 8px 32px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             animation: floatCard 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cycle-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
         }
 
         .cycle-card:nth-child(2) {
@@ -662,30 +677,36 @@
         }
 
         .cycle-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 50px rgba(0, 217, 255, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 0 50px rgba(0, 217, 255, 0.5), 0 15px 40px rgba(0, 0, 0, 0.4);
             border-color: var(--neon-pink);
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(0, 217, 255, 0.08));
         }
 
         .cycle-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .cycle-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--neon-gold);
+            background: linear-gradient(135deg, var(--neon-gold), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .cycle-stats {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
             flex-wrap: wrap;
         }
 
@@ -693,33 +714,46 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 1rem 1.5rem;
+            background: rgba(168, 85, 247, 0.1);
+            border-radius: 12px;
+            border: 1px solid var(--neon-purple);
+            min-width: 120px;
         }
 
         .stat-label {
             font-family: 'Poppins', sans-serif;
             font-size: 0.85rem;
             color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .stat-value {
             font-family: 'Azeret Mono', monospace;
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--neon-cyan);
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 0.5rem;
         }
 
         .pdf-button-container {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .pdf-button {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
+            padding: 0.9rem 2rem;
             background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
             color: #fff;
             border: none;
@@ -731,6 +765,7 @@
             text-decoration: none;
             font-size: 0.95rem;
             box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+            position: relative;
         }
 
         .pdf-button:hover {
@@ -748,8 +783,10 @@
         .assessment-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
+            margin-top: 2rem;
             overflow-x: auto;
+            position: relative;
+            z-index: 1;
         }
 
         .assessment-table thead {
@@ -759,15 +796,18 @@
 
         .assessment-table th {
             font-family: 'Space Grotesk', sans-serif;
-            padding: 1rem;
+            padding: 1.2rem;
             text-align: left;
             color: var(--neon-cyan);
             font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
         }
 
         .assessment-table td {
             font-family: 'Poppins', sans-serif;
-            padding: 1rem;
+            padding: 1.2rem;
             border-bottom: 1px solid rgba(0, 217, 255, 0.2);
             color: var(--text-primary);
         }
@@ -780,7 +820,7 @@
             display: inline-block;
             background: linear-gradient(135deg, var(--neon-gold), var(--neon-pink));
             color: #000;
-            padding: 0.4rem 0.8rem;
+            padding: 0.5rem 1rem;
             border-radius: 20px;
             font-weight: 700;
             font-family: 'Azeret Mono', monospace;
@@ -998,42 +1038,56 @@
 
         .personal-logo:hover {
             opacity: 1;
-            filter: drop-shadow(0 0 15px rgba(0, 217, 255, 0.7));
-        }
-
-        .copyright {
-            font-family: 'Azeret Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 1rem;
         }
 
         /* ==================== RESPONSIVE DESIGN ==================== */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .navbar-center {
-                gap: 1rem;
-                font-size: 0.85rem;
+                font-size: 2.5rem;
             }
 
             .section-title {
                 font-size: 1.8rem;
             }
 
-            .profile-frame {
-                width: 180px;
-                height: 180px;
+            .navbar-center {
+                gap: 1.5rem;
             }
 
-            .gallery-grid {
-                grid-template-columns: 1fr;
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .cycle-stats {
+                gap: 1rem;
+            }
+
+            .stat-item {
+                min-width: 100px;
+                padding: 0.8rem 1rem;
+            }
+
+            .cycle-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-center {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .profile-frame {
+                width: 200px;
+                height: 200px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
             }
 
             .cycle-header {
@@ -1041,603 +1095,483 @@
                 align-items: flex-start;
             }
 
-            .pdf-button-container {
-                flex-direction: column;
-            }
-
-            .pdf-button {
-                width: 100%;
-                justify-content: center;
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .navbar-center {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .navbar-right {
-                gap: 1rem;
-            }
-
-            .pdf-modal-content {
-                width: 95%;
-                height: 90vh;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 1.5rem;
-            }
-
-            body {
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 1.3rem;
-            }
-
-            .profile-frame {
-                width: 150px;
-                height: 150px;
-            }
-
             .cycle-stats {
-                gap: 0.5rem;
+                flex-direction: column;
+                width: 100%;
             }
 
-            .stat-value {
-                font-size: 1rem;
-            }
-        }
-
-        /* ==================== ACCESSIBILITY ==================== */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
+            .stat-item {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Starfield Background Canvas -->
-    <div class="starfield">
-        <canvas id="starCanvas"></canvas>
-    </div>
+    <!-- Starfield Background -->
+    <div class="starfield"></div>
+    <canvas id="starCanvas"></canvas>
 
     <!-- Navigation Bar -->
     <nav>
         <div class="navbar-left">
-            <!-- LOGO PLACEHOLDER #1: University Logo - Swap "logo-university.png" with your actual university logo -->
-            <img src="logo undiksha.png" alt="University Logo" class="logo-university">
-            <div class="navbar-brand">E-Portfolio</div>
+            <div class="navbar-brand">E-PORTFOLIO</div>
         </div>
-
         <div class="navbar-center">
-            <a href="#profil" class="nav-link">Beranda</a>
+            <a href="#profil" class="nav-link">Profil</a>
             <a href="#dokumentasi" class="nav-link">Dokumentasi</a>
             <a href="#analisis" class="nav-link">Analisis</a>
             <a href="#penilaian" class="nav-link">Penilaian</a>
-            <a href="#model-guru" class="nav-link">Model</a>
         </div>
-
         <div class="navbar-right">
+            <a href="#" class="nav-link">Kontak</a>
         </div>
     </nav>
 
-    <!-- HERO SECTION: PROFIL MAHASISWA -->
-    <section id="profil" class="hero">
-        <div class="hero-content" data-aos="fade-up">
-            <h1 class="hero-title">Ni Luh Erna Budiartini</h1>
-            <p class="hero-subtitle">Program Pendidikan Profesi Guru</p>
+    <!-- Hero Section (Profile) -->
+    <section class="hero" id="profil">
+        <div class="hero-content">
+            <h1 class="hero-title">Selamat Datang</h1>
+            <p class="hero-subtitle">Perjalanan Menuju Kesuksesan Karir</p>
 
-            <!-- Profile Photo Frame - LOGO PLACEHOLDER #2: Easy to replace with your actual portrait -->
+            <!-- UPDATED: Profile Photo with Unique Star Shape Frame -->
             <div class="profile-frame">
-                <img src="foto-profil.jpg" alt="Profile Photo" class="profile-photo">
+                <img src="del.png" alt="Foto Profil" class="profile-photo">
             </div>
 
             <div class="profile-section">
-                <!-- Origin & Uniqueness (Handwriting Style) -->
+                <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; color: var(--neon-cyan); margin-bottom: 1rem;">
+                    Nama Lengkap
+                </h2>
                 <p class="origin-story">
-                    Dari jantung Desa Ringdikit, Buleleng, Bali. di mana tradisi bertemu inovasi...
+                    "Komitmen untuk terus belajar dan berkembang"
                 </p>
-
-                <!-- Narrative Block (Clean Body Font) -->
                 <p class="narrative-block">
-                    Perjalanan saya sebagai pendidik berakar pada komitmen mendalam untuk menciptakan lingkungan belajar yang inklusif dan berpusat pada siswa. Saya percaya bahwa setiap siswa memiliki potensi unik, dan peran saya adalah memelihara potensi tersebut melalui pedagogi yang bijaksana dan keterlibatan autentik.
+                    Saya adalah seorang profesional yang dedicated dalam mengejar keunggulan akademik dan pengembangan karir. Perjalanan saya dimulai dengan visi yang jelas untuk membuat dampak positif dalam dunia pendidikan dan teknologi.
                 </p>
 
-                <!-- Inspiration Quote Box -->
                 <div class="quote-constellation">
-                    <span class="close-modal" style="opacity: 0; cursor: default;">&times;</span>
                     <p class="quote-text">
-                        "Pendidikan bukan mengisi ember, tetapi menyalakan api."
+                        "Pendidikan adalah kunci yang membuka ribuan pintu"
                     </p>
-                    <p class="quote-author">— William Butler Yeats</p>
+                    <p class="quote-author">— Nelson Mandela</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DOKUMENTASI SECTION: STELLAR GALLERY -->
-    <section id="dokumentasi" class="dokumentasi">
-        <h2 class="section-title">Galeri Dokumentasi</h2>
-        <p class="section-subtitle">Praktik Mengajar, Diskusi Kelompok & Kegiatan Komunitas</p>
+    <!-- Dokumentasi Section -->
+    <section class="dokumentasi" id="dokumentasi">
+        <h2 class="section-title">Dokumentasi</h2>
+        <p class="section-subtitle">Koleksi dokumentasi perjalanan pembelajaran</p>
 
         <div class="gallery-grid">
-            <!-- Gallery Item 1 - Placeholder: "dok1.jpg" -->
-            <div class="gallery-item" data-aos="fade-up">
-                <div class="gallery-img-container" onclick="openModal(0)">
-                    <img src="dok1.jpg" alt="Teaching Practice 1">
+            <div class="gallery-item" onclick="openModal(this)">
+                <div class="gallery-img-container">
+                    <img src="del.png" alt="Dokumentasi 1">
                 </div>
-                <p class="gallery-caption">Sesi Pengajaran Interaktif</p>
+                <p class="gallery-caption">Proyek Kelas 1</p>
             </div>
-
-            <!-- Gallery Item 2 - Placeholder: "dok2.jpg" -->
-            <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-                <div class="gallery-img-container" onclick="openModal(1)">
-                    <img src="dok2.jpg" alt="Group Discussion">
+            <div class="gallery-item" onclick="openModal(this)">
+                <div class="gallery-img-container">
+                    <img src="del.png" alt="Dokumentasi 2">
                 </div>
-                <p class="gallery-caption">Pembelajaran Kolaboratif</p>
+                <p class="gallery-caption">Proyek Kelas 2</p>
             </div>
-
-            <!-- Gallery Item 3 - Placeholder: "dok3.jpg" -->
-            <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="gallery-img-container" onclick="openModal(2)">
-                    <img src="dok3.jpg" alt="Community Activity">
+            <div class="gallery-item" onclick="openModal(this)">
+                <div class="gallery-img-container">
+                    <img src="del.png" alt="Dokumentasi 3">
                 </div>
-                <p class="gallery-caption">Keterlibatan Komunitas</p>
+                <p class="gallery-caption">Proyek Kelas 3</p>
             </div>
-
-            <!-- Gallery Item 4 - Placeholder: "dok4.jpg" -->
-            <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="gallery-img-container" onclick="openModal(3)">
-                    <img src="dok4.jpg" alt="Student Work">
+            <div class="gallery-item" onclick="openModal(this)">
+                <div class="gallery-img-container">
+                    <img src="del.png" alt="Dokumentasi 4">
                 </div>
-                <p class="gallery-caption">Kreativitas Siswa</p>
-            </div>
-        </div>
-
-        <!-- Modal (Lightbox) -->
-        <div id="imageModal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal" onclick="closeModal()">&times;</span>
-                <img id="modalImage" src="" alt="Full View" class="modal-img">
-                <p id="modalDescription" class="modal-description"></p>
+                <p class="gallery-caption">Proyek Akhir</p>
             </div>
         </div>
     </section>
 
-    <!-- ANALISIS ARTEFAK SECTION: THE CORE NEBULA -->
-    <section id="analisis" class="analisis">
+    <!-- Analisis Artefak Section -->
+    <section class="analisis" id="analisis">
         <h2 class="section-title">Analisis Artefak</h2>
-        <p class="section-subtitle">Rencana Mengajar, Media, Video & Hasil Kerja Siswa</p>
-
-        <!-- Artifact Grid -->
-        <div class="artifact-grid">
-            <div class="artifact-card" data-aos="fade-up">
-                <div class="artifact-title">Rencana Pelaksanaan Pembelajaran</div>
-                <p class="artifact-desc">Rencana pelajaran komprehensif yang selaras dengan standar kurikulum</p>
-            </div>
-
-            <div class="artifact-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="artifact-title">Media Pembelajaran</div>
-                <p class="artifact-desc">Sumber daya pengajaran yang interaktif dan menarik</p>
-            </div>
-
-            <div class="artifact-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="artifact-title">Video Edukatif</div>
-                <p class="artifact-desc">Demonstrasi pengajaran dan tutorial yang direkam</p>
-            </div>
-
-            <div class="artifact-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="artifact-title">Hasil Kerja Siswa</div>
-                <p class="artifact-desc">Koleksi tugas dan proyek siswa</p>
-            </div>
-        </div>
-
-        <!-- Analysis Cards (Glassmorphism) -->
-        <h3 class="section-title" style="font-size: 1.8rem; margin-top: 3rem;">Analisis Mendalam</h3>
+        <p class="section-subtitle">Refleksi mendalam tentang pembelajaran</p>
 
         <div class="analysis-grid">
-            <div class="analysis-card" data-aos="fade-up">
-                <div class="analysis-card-title">🎯 Kendala</div>
-                <div class="analysis-card-content">Kendala yang diidentifikasi dan cara mengatasinya untuk meningkatkan hasil belajar siswa.</div>
+            <div class="analysis-card">
+                <h3 class="analysis-card-title">Artefak 1</h3>
+                <p class="analysis-card-content">
+                    Deskripsi lengkap tentang artefak pertama dan pembelajaran yang didapat dari pembuatannya. Fokus pada kompetensi yang dikembangkan.
+                </p>
             </div>
-
-            <div class="analysis-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="analysis-card-title">📚 Teori Pedagogi</div>
-                <div class="analysis-card-content">Kerangka kerja teoritis yang memandu keputusan instruksional dan pendekatan pedagogis.</div>
+            <div class="analysis-card">
+                <h3 class="analysis-card-title">Artefak 2</h3>
+                <p class="analysis-card-content">
+                    Penjelasan detail mengenai artefak kedua. Bagaimana hal ini mencerminkan pertumbuhan akademik dan profesional Anda.
+                </p>
             </div>
-
-            <div class="analysis-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="analysis-card-title">⭐ Faktor Keberhasilan</div>
-                <div class="analysis-card-content">Elemen kunci yang berkontribusi pada pengalaman belajar dan keterlibatan siswa yang berhasil.</div>
+            <div class="analysis-card">
+                <h3 class="analysis-card-title">Artefak 3</h3>
+                <p class="analysis-card-content">
+                    Analisis artefak ketiga yang menunjukkan pencapaian signifikan. Relevansi dengan tujuan karir jangka panjang.
+                </p>
             </div>
-
-            <div class="analysis-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="analysis-card-title">🚀 Perubahan Komponen</div>
-                <div class="analysis-card-content">Modifikasi dan peningkatan yang dilakukan dalam siklus pengajaran berikutnya.</div>
+            <div class="analysis-card">
+                <h3 class="analysis-card-title">Artefak 4</h3>
+                <p class="analysis-card-content">
+                    Pembuktian kompetensi melalui artefak keempat. Integrasi teori dan praktik dalam pemecahan masalah real-world.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- LAMPIRAN SECTION: ASSESSMENT SCORES WITH PDF LINKS -->
-    <section id="penilaian" class="lampiran">
-        <h2 class="section-title">Skor Penilaian</h2>
-        <p class="section-subtitle">Siklus Mengajar 1, 2 & 3 - Evaluasi Guru Pamong</p>
+    <!-- Lampiran (Assessment) Section - IMPROVED CARD LAYOUT -->
+    <section class="lampiran" id="penilaian">
+        <h2 class="section-title">Penilaian 3 Siklus</h2>
+        <p class="section-subtitle">Hasil pembelajaran dan refleksi dari ketiga siklus pembelajaran</p>
 
         <div class="assessment-container">
-            <!-- CYCLE 1 CARD -->
-            <div class="cycle-card" data-aos="fade-up">
+            <!-- Cycle 1 Card -->
+            <div class="cycle-card">
                 <div class="cycle-header">
-                    <div class="cycle-title">📊 Siklus Mengajar 1</div>
+                    <h3 class="cycle-title">Siklus I - Pembelajaran Awal</h3>
                     <div class="cycle-stats">
                         <div class="stat-item">
-                            <div class="stat-label">Skor Perangkat</div>
-                            <div class="stat-value">85</div>
+                            <span class="stat-label">Nilai</span>
+                            <span class="stat-value">85</span>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-label">Skor Mengajar</div>
-                            <div class="stat-value">82</div>
+                            <span class="stat-label">Partisipasi</span>
+                            <span class="stat-value">90%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Penugasan</span>
+                            <span class="stat-value">88</span>
                         </div>
                     </div>
                 </div>
-
+                
                 <table class="assessment-table">
                     <thead>
                         <tr>
-                            <th>Penilai</th>
-                            <th>Instrumen 7</th>
-                            <th>Instrumen 8</th>
-                            <th>Rata-rata</th>
+                            <th>Kompetensi</th>
+                            <th>Deskripsi</th>
+                            <th>Skor</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Guru Pamong</td>
-                            <td>85</td>
-                            <td>82</td>
-                            <td><span class="score-badge">83.5</span></td>
+                            <td><strong>Pemahaman Materi</strong></td>
+                            <td>Mendemonstrasikan pemahaman dasar konsep</td>
+                            <td><span class="score-badge">85</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Keterampilan Praktik</strong></td>
+                            <td>Dapat mengaplikasikan teori dalam praktek</td>
+                            <td><span class="score-badge">80</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kolaborasi</strong></td>
+                            <td>Bekerja efektif dalam kelompok</td>
+                            <td><span class="score-badge">90</span></td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div class="pdf-button-container">
-                    <button class="pdf-button" onclick="openPdfModal('cycle1')">Lihat PDF Penilaian Guru Pamong</button>
+                    <a href="#" class="pdf-button">Lihat Laporan Siklus I</a>
                 </div>
             </div>
 
-            <!-- CYCLE 2 CARD -->
-            <div class="cycle-card" data-aos="fade-up" data-aos-delay="200">
+            <!-- Cycle 2 Card -->
+            <div class="cycle-card">
                 <div class="cycle-header">
-                    <div class="cycle-title">📊 Siklus Mengajar 2</div>
+                    <h3 class="cycle-title">Siklus II - Pengembangan Lanjut</h3>
                     <div class="cycle-stats">
                         <div class="stat-item">
-                            <div class="stat-label">Skor Perangkat</div>
-                            <div class="stat-value">90</div>
+                            <span class="stat-label">Nilai</span>
+                            <span class="stat-value">92</span>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-label">Skor Mengajar</div>
-                            <div class="stat-value">88</div>
+                            <span class="stat-label">Partisipasi</span>
+                            <span class="stat-value">95%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Penugasan</span>
+                            <span class="stat-value">91</span>
                         </div>
                     </div>
                 </div>
-
+                
                 <table class="assessment-table">
                     <thead>
                         <tr>
-                            <th>Penilai</th>
-                            <th>Instrumen 7</th>
-                            <th>Instrumen 8</th>
-                            <th>Rata-rata</th>
+                            <th>Kompetensi</th>
+                            <th>Deskripsi</th>
+                            <th>Skor</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Guru Pamong</td>
-                            <td>90</td>
-                            <td>88</td>
-                            <td><span class="score-badge">89</span></td>
+                            <td><strong>Analisis Kritis</strong></td>
+                            <td>Dapat menganalisis masalah secara mendalam</td>
+                            <td><span class="score-badge">92</span></td>
                         </tr>
-                    </tbody>
-                </table>
-
-                <div class="pdf-button-container">
-                    <button class="pdf-button" onclick="openPdfModal('cycle2')">Lihat PDF Penilaian Guru Pamong</button>
-                </div>
-            </div>
-
-            <!-- CYCLE 3 CARD -->
-            <div class="cycle-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="cycle-header">
-                    <div class="cycle-title">📊 Siklus Mengajar 3</div>
-                    <div class="cycle-stats">
-                        <div class="stat-item">
-                            <div class="stat-label">Skor Perangkat</div>
-                            <div class="stat-value">94</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">Skor Mengajar</div>
-                            <div class="stat-value">92</div>
-                        </div>
-                    </div>
-                </div>
-
-                <table class="assessment-table">
-                    <thead>
                         <tr>
-                            <th>Penilai</th>
-                            <th>Instrumen 7</th>
-                            <th>Instrumen 8</th>
-                            <th>Rata-rata</th>
+                            <td><strong>Inovasi</strong></td>
+                            <td>Membawa ide-ide kreatif dan inovatif</td>
+                            <td><span class="score-badge">90</span></td>
                         </tr>
-                    </thead>
-                    <tbody>
                         <tr>
-                            <td>Guru Pamong</td>
-                            <td>94</td>
-                            <td>92</td>
+                            <td><strong>Presentasi</strong></td>
+                            <td>Mampu mempresentasikan hasil dengan baik</td>
                             <td><span class="score-badge">93</span></td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div class="pdf-button-container">
-                    <button class="pdf-button" onclick="openPdfModal('cycle3')">Lihat PDF Penilaian Guru Pamong</button>
+                    <a href="#" class="pdf-button">Lihat Laporan Siklus II</a>
+                </div>
+            </div>
+
+            <!-- Cycle 3 Card -->
+            <div class="cycle-card">
+                <div class="cycle-header">
+                    <h3 class="cycle-title">Siklus III - Konsolidasi & Penyempurnaan</h3>
+                    <div class="cycle-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Nilai</span>
+                            <span class="stat-value">96</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Partisipasi</span>
+                            <span class="stat-value">100%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Penugasan</span>
+                            <span class="stat-value">95</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <table class="assessment-table">
+                    <thead>
+                        <tr>
+                            <th>Kompetensi</th>
+                            <th>Deskripsi</th>
+                            <th>Skor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Penguasaan Materi</strong></td>
+                            <td>Menguasai seluruh materi dengan sempurna</td>
+                            <td><span class="score-badge">96</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kepemimpinan</strong></td>
+                            <td>Menunjukkan kemampuan memimpin tim</td>
+                            <td><span class="score-badge">95</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Refleksi Diri</strong></td>
+                            <td>Mampu melakukan refleksi mendalam atas pembelajaran</td>
+                            <td><span class="score-badge">97</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pdf-button-container">
+                    <a href="#" class="pdf-button">Lihat Laporan Siklus III</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PDF MODAL -->
+    <!-- Model Guru Section -->
+    <section class="model-guru">
+        <h2 class="section-title">Model Pembelajaran Guru</h2>
+        <p class="section-subtitle">Pendekatan dan metodologi pembelajaran</p>
+
+        <div class="roadmap-container">
+            <div class="roadmap-item">
+                <div class="roadmap-dot">1</div>
+                <div class="roadmap-line"></div>
+                <div class="roadmap-content">
+                    <h4 class="roadmap-content-title">Pembelajaran Interaktif</h4>
+                    <p class="roadmap-content-desc">
+                        Menggunakan pendekatan dialog dan tanya jawab untuk membangun pemahaman aktif dari peserta didik.
+                    </p>
+                </div>
+            </div>
+
+            <div class="roadmap-item">
+                <div class="roadmap-dot">2</div>
+                <div class="roadmap-line"></div>
+                <div class="roadmap-content">
+                    <h4 class="roadmap-content-title">Berbasis Proyek</h4>
+                    <p class="roadmap-content-desc">
+                        Pembelajaran melalui pembuatan proyek nyata yang relevan dengan kehidupan sehari-hari.
+                    </p>
+                </div>
+            </div>
+
+            <div class="roadmap-item">
+                <div class="roadmap-dot">3</div>
+                <div class="roadmap-content">
+                    <h4 class="roadmap-content-title">Refleksi & Evaluasi</h4>
+                    <p class="roadmap-content-desc">
+                        Melakukan refleksi berkelanjutan dan evaluasi untuk perbaikan pembelajaran yang lebih baik.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-text">
+                © 2024 E-Portfolio - Perjalanan Kosmik menuju Kesuksesan. Semua hak dilindungi.
+            </p>
+            <p class="footer-text">
+                Dikembangkan dengan ❤️ untuk menampilkan perjalanan pembelajaran yang luar biasa.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal for Gallery -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <img id="modalImg" class="modal-img" src="" alt="">
+            <p id="modalDesc" class="modal-description"></p>
+        </div>
+    </div>
+
+    <!-- PDF Modal -->
     <div id="pdfModal" class="pdf-modal">
         <div class="pdf-modal-content">
             <div class="pdf-modal-header">
-                <div class="pdf-modal-title" id="pdfModalTitle">PDF Penilaian</div>
+                <h2 class="pdf-modal-title">Laporan Penilaian</h2>
                 <button class="pdf-modal-close" onclick="closePdfModal()">&times;</button>
             </div>
             <div class="pdf-modal-body">
                 <div class="pdf-placeholder">
                     <div class="pdf-placeholder-icon">📄</div>
-                    <div class="pdf-placeholder-text">Memuat PDF...</div>
-                    <div class="pdf-placeholder-subtext">Ganti tautan PDF di JavaScript</div>
+                    <p class="pdf-placeholder-text">Laporan PDF</p>
+                    <p class="pdf-placeholder-subtext">Silakan hubungi untuk mendapatkan laporan lengkap</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODEL GURU SECTION: FUTURE TEACHER MODEL -->
-    <section id="model-guru" class="model-guru">
-        <h2 class="section-title">Model Guru Masa Depan</h2>
-        <p class="section-subtitle">Peta Jalan Bintang: Misi, Kompetensi & Karakter Profesional</p>
-
-        <div class="roadmap-container">
-            <div class="roadmap-item" data-aos="fade-right">
-                <div class="roadmap-dot">1</div>
-                <div class="roadmap-line"></div>
-                <div class="roadmap-content">
-                    <div class="roadmap-content-title">🌟 Misi</div>
-                    <p class="roadmap-content-desc">
-                        Memupuk pemikiran kritis, kreativitas, dan belas kasih pada setiap siswa melalui pedagogi yang inovatif dan inklusif.
-                    </p>
-                </div>
-            </div>
-
-            <div class="roadmap-item" data-aos="fade-right" data-aos-delay="200">
-                <div class="roadmap-dot">2</div>
-                <div class="roadmap-line"></div>
-                <div class="roadmap-content">
-                    <div class="roadmap-content-title">💫 Kompetensi Inti</div>
-                    <p class="roadmap-content-desc">
-                        Penguasaan materi, keahlian pedagogis, literasi digital, sensitivitas budaya, dan pola pikir pembelajaran berkelanjutan.
-                    </p>
-                </div>
-            </div>
-
-            <div class="roadmap-item" data-aos="fade-right" data-aos-delay="400">
-                <div class="roadmap-dot">3</div>
-                <div class="roadmap-content">
-                    <div class="roadmap-content-title">✨ Karakter Profesional</div>
-                    <p class="roadmap-content-desc">
-                        Integritas, empati, ketahanan, adaptabilitas, dan komitmen yang teguh terhadap kesuksesan siswa dan keunggulan pendidikan.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-content">
-            <p class="footer-text">Dibuat dengan semangat untuk pendidikan dan inovasi.</p>
-
-            <!-- LOGO PLACEHOLDER #3: Personal Logo/Watermark - Easy to swap with your actual personal logo -->
-            <img src="personal-logo.png" alt="Personal Logo" class="personal-logo">
-
-            <p class="copyright">© 2024 PPG E-Portfolio. Semua hak dilindungi.</p>
-        </div>
-    </footer>
-
-    <!-- AOS (Animate On Scroll) Script -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+    
     <script>
-        // ==================== PDF DATA CONFIGURATION ====================
-        // 🔗 PENTING: Ganti tautan Google Drive ini dengan URL PDF Anda yang sebenarnya
-        // Cara mendapatkan tautan PDF yang dapat dibagikan dari Google Drive:
-        // 1. Unggah PDF ke Google Drive
-        // 2. Klik kanan → Bagikan → Ubah ke "Siapa pun dengan tautannya"
-        // 3. Salin tautannya dan modifikasi: https://drive.google.com/file/d/FILE_ID/view?usp=sharing
-        // 4. Ganti FILE_ID di URL di bawah
-
-        const pdfLinks = {
-            'cycle1': 'https://drive.google.com/file/d/YOUR_FILE_ID_HERE/preview', // Ganti YOUR_FILE_ID_HERE
-            'cycle2': 'https://drive.google.com/file/d/YOUR_FILE_ID_HERE/preview',
-            'cycle3': 'https://drive.google.com/file/d/YOUR_FILE_ID_HERE/preview'
-        };
-
-        const pdfTitles = {
-            'cycle1': '👨‍🏫 Penilaian Guru Pamong - Siklus 1',
-            'cycle2': '👨‍🏫 Penilaian Guru Pamong - Siklus 2',
-            'cycle3': '👨‍🏫 Penilaian Guru Pamong - Siklus 3'
-        };
-
-        // ==================== PDF MODAL FUNCTIONS ====================
-        function openPdfModal(pdfKey) {
-            const modal = document.getElementById('pdfModal');
-            const modalBody = modal.querySelector('.pdf-modal-body');
-            const modalTitle = document.getElementById('pdfModalTitle');
-            
-            const pdfUrl = pdfLinks[pdfKey];
-            const title = pdfTitles[pdfKey];
-
-            // Update title
-            modalTitle.textContent = title;
-
-            // Create iframe
-            if (pdfUrl && pdfUrl !== 'https://drive.google.com/file/d/YOUR_FILE_ID_HERE/preview') {
-                modalBody.innerHTML = `<iframe src="${pdfUrl}" allowfullscreen></iframe>`;
-            } else {
-                modalBody.innerHTML = `
-                    <div class="pdf-placeholder">
-                        <div class="pdf-placeholder-icon">⚠️</div>
-                        <div class="pdf-placeholder-text">PDF belum dikonfigurasi</div>
-                        <div class="pdf-placeholder-subtext">Silakan tambahkan tautan PDF Google Drive Anda di kode</div>
-                    </div>
-                `;
-            }
-
-            modal.classList.add('active');
-        }
-
-        function closePdfModal() {
-            const modal = document.getElementById('pdfModal');
-            modal.classList.remove('active');
-        }
-
-        // Close PDF modal when clicking outside
-        document.getElementById('pdfModal').addEventListener('click', (e) => {
-            if (e.target.id === 'pdfModal') {
-                closePdfModal();
-            }
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
         });
 
-        // ==================== STARFIELD CANVAS ====================
+        // Starfield Animation
         const canvas = document.getElementById('starCanvas');
         const ctx = canvas.getContext('2d');
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let stars = [];
+        const stars = [];
+        const numStars = 100;
 
-        class Star {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.radius = Math.random() * 1.5;
-                this.opacity = Math.random() * 0.5 + 0.5;
-                this.opacityChange = (Math.random() - 0.5) * 0.02;
-                this.color = ['#FFFFFF', '#00D9FF', '#A855F7', '#EC4899', '#FBBF24'][Math.floor(Math.random() * 5)];
-            }
-
-            update() {
-                this.opacity += this.opacityChange;
-                if (this.opacity <= 0.3 || this.opacity >= 1) {
-                    this.opacityChange *= -1;
-                }
-            }
-
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.globalAlpha = this.opacity;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.globalAlpha = 1;
-            }
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.5,
+                opacity: Math.random() * 0.5 + 0.5
+            });
         }
 
-        function initStars() {
-            stars = [];
-            for (let i = 0; i < 200; i++) {
-                stars.push(new Star());
-            }
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#fff';
+
+            stars.forEach(star => {
+                ctx.globalAlpha = star.opacity;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Twinkling effect
+                star.opacity += (Math.random() - 0.5) * 0.02;
+                star.opacity = Math.max(0.3, Math.min(1, star.opacity));
+            });
+
+            ctx.globalAlpha = 1;
         }
 
         function animateStars() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            stars.forEach(star => {
-                star.update();
-                star.draw();
-            });
-
+            drawStars();
             requestAnimationFrame(animateStars);
         }
 
+        animateStars();
+
+        // Responsive Canvas
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
 
-        initStars();
-        animateStars();
-
-        // ==================== IMAGE MODAL (LIGHTBOX) ====================
-        const galleryDescriptions = [
-            "Sesi Pengajaran Interaktif - Siswa terlibat dalam kegiatan pembelajaran kolaboratif",
-            "Pembelajaran Kolaboratif - Diskusi kelompok yang mendorong pembelajaran sebaya dan komunikasi",
-            "Keterlibatan Komunitas - Menghubungkan pembelajaran kelas dengan aplikasi dunia nyata",
-            "Kreativitas Siswa - Menampilkan proyek siswa yang inovatif dan ekspresi kreatif"
-        ];
-
-        function openModal(index) {
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalDescription = document.getElementById('modalDescription');
-
-            const images = ['dok1.jpg', 'dok2.jpg', 'dok3.jpg', 'dok4.jpg'];
-            modalImage.src = images[index];
-            modalDescription.textContent = galleryDescriptions[index];
-
+        // Modal Functions
+        function openModal(element) {
+            const modal = document.getElementById('modal');
+            const img = element.querySelector('img');
+            const caption = element.querySelector('.gallery-caption');
+            
+            document.getElementById('modalImg').src = img.src;
+            document.getElementById('modalDesc').textContent = caption.textContent;
+            
             modal.classList.add('active');
         }
 
         function closeModal() {
-            const modal = document.getElementById('imageModal');
-            modal.classList.remove('active');
+            document.getElementById('modal').classList.remove('active');
         }
 
-        document.getElementById('imageModal').addEventListener('click', (e) => {
-            if (e.target.id === 'imageModal') {
-                closeModal();
+        function closePdfModal() {
+            document.getElementById('pdfModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            const pdfModal = document.getElementById('pdfModal');
+            
+            if (event.target === modal) {
+                modal.classList.remove('active');
             }
-        });
+            if (event.target === pdfModal) {
+                pdfModal.classList.remove('active');
+            }
+        }
 
-        // ==================== AOS INITIALIZATION ====================
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
-        });
-
-        // ==================== SMOOTH SCROLL POLISH ====================
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
